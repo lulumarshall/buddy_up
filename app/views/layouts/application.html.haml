@@ -6,4 +6,24 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    - flash.each do |name, msg|
+      = content_tag :div, msg, class: "alert alert-#{name}" do
+        = msg
+    %ul
+      -if user_signed_in?
+        %li
+          -if current_user.image?
+            = image_tag current_user.image, class: "small-avatar"
+          -if current_user.name?
+            = current_user.name
+          -if current_user.email?
+            = current_user.email
+          -if current_user.username?
+            = current_user.username
+        %li= link_to "Edit profile", edit_user_registration_path
+        %li= link_to "Logout", destroy_user_session_path, method: :delete 
+      -else
+        %li=link_to "Login", new_user_session_path
+        %li= link_to "Sign Up", new_user_registration_path
+
     = yield

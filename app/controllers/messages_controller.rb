@@ -1,7 +1,9 @@
 class MessagesController < ApplicationController
- 
+  
+  before_filter :authenticate_user!, except: [:index, :show]
   before_filter :set_message, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json, :js
+  
   def index
     @messages = Message.all
     respond_with(@messages)
