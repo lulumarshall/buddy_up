@@ -1,0 +1,29 @@
+%h1 Listing rides
+
+%table
+  %tr
+    %th Title
+    %th Distance
+    %th Start lat
+    %th Start lng
+    %th Skill
+    %th Status
+    %th
+    %th
+    %th
+
+  - @rides.each do |ride|
+    %tr
+      %td= ride.title
+      %td= ride.distance
+      %td= ride.start_lat
+      %td= ride.start_lng
+      %td= ride.skill
+      %td= ride.status
+      %td= link_to 'Show', ride
+      %td= link_to 'Edit', edit_ride_path(ride)
+      %td= link_to 'Destroy', ride, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Ride', new_ride_path

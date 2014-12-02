@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @ride.title
+%p
+  %b Distance:
+  = @ride.distance
+%p
+  %b Start lat:
+  = @ride.start_lat
+%p
+  %b Start lng:
+  = @ride.start_lng
+%p
+  %b Skill:
+  = @ride.skill
+%p
+  %b Status:
+  = @ride.status
+
+= link_to 'Edit', edit_ride_path(@ride)
+\|
+= link_to 'Back', rides_path

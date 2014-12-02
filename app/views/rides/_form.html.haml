@@ -1,0 +1,28 @@
+= form_for @ride do |f|
+  - if @ride.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@ride.errors.count, "error")} prohibited this ride from being saved:"
+      %ul
+        - @ride.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :distance
+    = f.text_field :distance
+  .field
+    = f.label :start_lat
+    = f.text_field :start_lat
+  .field
+    = f.label :start_lng
+    = f.text_field :start_lng
+  .field
+    = f.label :skill
+    = f.text_field :skill
+  .field
+    = f.label :status
+    = f.text_field :status
+  .actions
+    = f.submit 'Save'

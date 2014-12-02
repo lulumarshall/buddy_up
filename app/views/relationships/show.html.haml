@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Follower:
+  = @relationship.follower_id
+%p
+  %b Followed:
+  = @relationship.followed_id
+
+= link_to 'Edit', edit_relationship_path(@relationship)
+\|
+= link_to 'Back', relationships_path
