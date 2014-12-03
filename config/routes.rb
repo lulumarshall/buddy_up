@@ -1,4 +1,7 @@
 BuddyUpApp::Application.routes.draw do
+  resources :locations
+
+
   resources :rides
 
 

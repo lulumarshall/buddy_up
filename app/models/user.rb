@@ -21,35 +21,7 @@ class User < ActiveRecord::Base
   has_many :cycles 
 
   has_many :rides, through: :cycles 
-  # Follows a user.
-  def user_name=(name)
-  user = User.find_by_name(name)
-    if user
-      self.user_id = user.id
-    else
-      errors[:user_name] << "Invalid name entered"
-    end
-  end
-
-  def user_name
-    User.find(user_id).name if user_id
-  end
-
-  def follow(other_user)
-    active_relationships.create(followed_id: other_user.id)
-  end
-
-  # Unfollows a user.
-  def unfollow(other_user)
-    userd = Relationship.where(followed_id: other_user.id).first 
-    userd.destroy
-  end
-
-  # Returns true if the current user is following the other user.
-  def following?(other_user)
-    following.include?(other_user)
-  end
-    
+  has_many :locations
   def self.map_authentication_to_user_properties(authentication)
     authentication.slice(:info, :provider, :uid, :user_id)
   end
