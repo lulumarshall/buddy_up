@@ -29,6 +29,8 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     arel (3.0.3)
+    autoprefixer-rails (4.0.1.1)
+      execjs
     bcrypt (3.1.9)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
@@ -36,6 +38,8 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     bourbon (4.0.2)
       sass (~> 3.3)
       thor
@@ -188,8 +192,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 3.2.0)
   bourbon
   cancancan (~> 1.9)
   coffee-rails (~> 3.2.1)

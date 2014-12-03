@@ -14,7 +14,10 @@ gem "strava-api-v3"
 gem 'bourbon'
 gem 'cancancan', '~> 1.9'
 gem 'geocoder'
-gem 'gmaps4rails'                  
+gem 'gmaps4rails' 
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+                 
 
 # Gems used only for assets and not required
 # in production environments by default.
