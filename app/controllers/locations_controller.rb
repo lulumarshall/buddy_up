@@ -7,7 +7,6 @@ class LocationsController < ApplicationController
        marker.lat location.latitude
        marker.lng location.longitude
        marker.infowindow location.title
-
        marker.infowindow User.find(location.user_id).name
      end 
    end

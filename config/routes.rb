@@ -13,16 +13,9 @@ BuddyUpApp::Application.routes.draw do
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
-  devise_scope :user do
-    resources :users,  only: [:index]
-    resources :users do
-        member do
-          get :following, :followers
-        end
-      end
-  end
+  
 
-  root :to => 'messages#index'
+  root :to => 'locations#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
