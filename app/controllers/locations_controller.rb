@@ -6,6 +6,9 @@ class LocationsController < ApplicationController
      @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
        marker.lat location.latitude
        marker.lng location.longitude
+       marker.infowindow location.title
+
+       marker.infowindow User.find(location.user_id).name
      end 
    end
 
@@ -23,6 +26,7 @@ class LocationsController < ApplicationController
 
   def create
     @location = Location.new(params[:location])
+    @location.user_id = current_user.id
     @location.save
     respond_with(@location)
   end
