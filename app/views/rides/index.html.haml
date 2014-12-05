@@ -1,23 +1,42 @@
 %h1 Listing rides
+%button.map Use Current Location!
+%input{name: "address", placeholder: "Enter Address", type: "text", id: 'address'}
+
+#filter
+  = form_tag "", id: "filter_form" do |f|
+    .field
+      = label_tag :address
+      = text_field_tag :address
+    .field
+      = label_tag :distance
+      = text_field_tag :distance
+    .field
+      = label_tag :address
+      = text_field_tag :address
+    .field
+      = label_tag  :skill
+      %br/
+      = text_field_tag :skill
+    .field
+      = label_tag  :status
+      %br/
+      = text_field_tag :status
+    .actions
+      = submit_tag
 
 %table
   %tr
     %th Title
-    %th Distance
-    %th Start lat
-    %th Start lng
+    %th Length
+    %th Address
     %th Skill
     %th Status
-    %th
-    %th
-    %th
 
   - @rides.each do |ride|
     %tr
       %td= ride.title
       %td= ride.distance
-      %td= ride.start_lat
-      %td= ride.start_lng
+      %td= ride.address
       %td= ride.skill
       %td= ride.status
       %td= link_to 'Show', ride
@@ -27,3 +46,5 @@
 %br
 
 = link_to 'New Ride', new_ride_path
+= link_to 'New Location', new_location_path
+#map-canvas{style: "height: 500px; width: 500px; background-color: white"}

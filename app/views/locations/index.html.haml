@@ -1,5 +1,9 @@
 %h1 Listing locations
-
+%button.map Use Current Location!
+%input{name: "address", placeholder: "Enter Address", type: "text", id: 'address'}
+%input{name: "distance", placeholder: "Distance", type: "integer" id: 'distance'}
+%input{name: "length", placeholder: "Length", type: "integer" id: 'length'}
+%input{name: "skill", placeholder: "skill", type: "text" id: 'skill'}
 %table
   %tr
     %th Latitude
@@ -23,12 +27,13 @@
 %br
 
 = link_to 'New Location', new_location_path
-%div{:style => "width: 800px;"}
-  #map{:style => "width: 800px; height: 400px;"}
-:javascript
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(#{raw @hash.to_json});
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  });
+#map-canvas{style: "height: 500px; width: 500px; background-color: white"}
+/ %div{:style => "width: 800px;"}
+/   #map{:style => "width: 800px; height: 400px;"}
+/ :javascript
+/   handler = Gmaps.build('Google');
+/   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+/     markers = handler.addMarkers(#{raw @hash.to_json});
+/     handler.bounds.extendWith(markers);
+/     handler.fitMapToBounds();
+/   });
