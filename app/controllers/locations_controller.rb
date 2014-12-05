@@ -3,8 +3,8 @@ class LocationsController < ApplicationController
   respond_to :html, :json, :js
   def index
     @locations = Location.all
-  
     render json: @locations and return if request.xhr?
+
     @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
       marker.lat location.latitude
        marker.lng location.longitude

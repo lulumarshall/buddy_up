@@ -1,9 +1,14 @@
 class RidesController < ApplicationController
   before_filter :set_ride, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json, :js
+  
   def index
-    @rides = Ride.all
-    respond_with(@rides)
+    if params[:location].present?
+      @rides = Ride.near(params[:location], 50, :order => :distance)
+    else
+      @rides = Ride.all
+    end
+    render json: @rides and return if request.xhr?
   end
 
   def show

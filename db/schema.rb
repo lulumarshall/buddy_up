@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141204094658) do
+ActiveRecord::Schema.define(:version => 20141205114935) do
 
   create_table "cycles", :force => true do |t|
     t.string   "user_id"
@@ -63,6 +63,9 @@ ActiveRecord::Schema.define(:version => 20141204094658) do
     t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "users", :force => true do |t|

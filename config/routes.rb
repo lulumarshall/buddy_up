@@ -15,7 +15,7 @@ BuddyUpApp::Application.routes.draw do
 
   
 
-  root :to => 'locations#index'
+  root :to => 'rides#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
