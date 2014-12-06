@@ -1,0 +1,7 @@
+#message_form
+  / %a#new_message send message
+  = link_to 'Send Message', new_message_path(:receiver => Cycle.where(ride_id: @rides.last.id.to_s).first.user_id), id: 'new_message'
+
+  / , data: { 'message-to' => Cycle.where(ride_id: @rides.last.id.to_s).first.user_id }
+
+  

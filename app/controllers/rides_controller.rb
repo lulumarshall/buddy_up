@@ -24,9 +24,12 @@ class RidesController < ApplicationController
   end
 
   def create
-    @ride = Ride.new(params[:ride])
-    @ride.save
+    @ride = Ride.create(params[:ride])
+    if @ride.save
+      Cycle.create(user_id: current_user.id, ride_id: @ride.id)
+    end
     respond_with(@ride)
+
   end
 
   def update

@@ -6,14 +6,20 @@ class MessagesController < ApplicationController
   
   def index
     @messages = Message.all
+    @user = User.all
     respond_with(@messages)
   end
 
   def show
+    @receiver_details = Message.receiver_object(@message)
+    @sender_details = Message.sender_object(@message)
     respond_with(@message)
   end
 
   def new
+
+    @receiver_object = User.find(params[:receiver])
+    @sender_object = current_user
     @message = Message.new
     respond_with(@message)
   end
@@ -26,6 +32,7 @@ class MessagesController < ApplicationController
     @message.save
     respond_with(@message)
   end
+
 
   def update
     @message.update_attributes(params[:message])

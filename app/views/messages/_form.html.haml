@@ -1,3 +1,10 @@
+%div.receiver
+  To
+  =@receiver_object.name
+%div.sender
+  From
+  =@sender_object.name
+  
 = form_for @message do |f|
   - if @message.errors.any?
     #error_explanation
@@ -7,13 +14,16 @@
           %li= msg
 
   .field
-    = f.label :sender_id
-    = f.number_field :sender_id
+    - f.label :sender_id
+    = f.text_field :sender_id, value: @sender_object.id, type: 'hidden'
   .field
-    = f.label :receiver_id
-    = f.number_field :receiver_id
+    - f.label :receiver_id
+    = f.text_field :receiver_id, value: @receiver_object.id, type: 'hidden'
   .field
-    = f.label :content
-    = f.text_area :content
+    - f.label :subject
+    = f.text_field :subject, placeholder: 'title'
+  .field
+    - f.label :content
+    = f.text_area :content, placeholder: 'content'
   .actions
-    = f.submit 'Save'
+    = f.submit 'Send'

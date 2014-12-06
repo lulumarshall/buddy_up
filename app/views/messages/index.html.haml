@@ -4,14 +4,17 @@
   %tr
     %th Sender
     %th Receiver
-    %th Content
+    %th Subject
+    %th 
+    %th 
+    %th 
 
-
+  
   - @messages.each do |message|
     %tr
       %td= message.sender_id
       %td= message.receiver_id
-      %td= message.content
+      %td= message.subject
       %td= link_to 'Show', message
       %td= link_to 'Edit', edit_message_path(message)
       %td= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }

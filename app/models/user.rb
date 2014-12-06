@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
   has_many :receivers, through: :received_messages, source: :receiver
 
   has_many :cycles 
-
   has_many :rides, through: :cycles 
+  
   has_many :locations
   def self.map_authentication_to_user_properties(authentication)
     authentication.slice(:info, :provider, :uid, :user_id)
