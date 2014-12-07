@@ -40,7 +40,7 @@
       %td= ride.skill
       %td= ride.status
       %td
-        =render 'message_form'
+        = link_to 'Send Message', new_message_path(:receiver => Cycle.where(ride_id: ride.id.to_s).first.user_id), id: 'new_message'
       %td= link_to 'Show', ride
       %td= link_to 'Edit', edit_ride_path(ride)
       %td= link_to 'Destroy', ride, :method => :delete, :data => { :confirm => 'Are you sure?' }

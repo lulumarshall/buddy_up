@@ -1,4 +1,7 @@
+
 %h1 Listing messages
+= link_to 'Sent', messages_path(:sent => 'sent'), id: 'sent_message', class: 'btn'
+= link_to 'Received', messages_path(:received => 'received'), id: 'received_message', class: 'btn'
 
 %table
   %tr

@@ -5,8 +5,7 @@ class MessagesController < ApplicationController
   respond_to :html, :json, :js
   
   def index
-    @messages = Message.all
-    @user = User.all
+      @messages = Message.all
     respond_with(@messages)
   end
 
