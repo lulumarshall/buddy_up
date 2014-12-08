@@ -2,6 +2,7 @@ mapAjax = {
   map: null
 }
   var geocoder;
+  var rideLocations = [];
 
 
 mapAjax.drawMap = function(location){
@@ -58,6 +59,32 @@ mapAjax.geocodeAddress = function(address){
     }
   });
 }
+mapAjax.initialize = function(mapData){
+  var map = new google.maps.Map(document.getElementById('map-canvas'));
+  var bounds = new google.maps.LatLngBounds();
+  var infowindow = new google.maps.InfoWindow();
+
+  debugger;
+       
+  for (var i in mapData) {
+    var p = mapData[i];
+    var latlng = new google.maps.LatLng(p[0], p[1]);
+    bounds.extend(latlng);
+     
+    var marker = new google.maps.Marker({
+      position: latlng,
+      map: map,
+      title: p[2],
+      ride_distance: p[3]
+    });
+ 
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.setContent(this.ride_distance.toString());
+      infowindow.open(map, this);
+    });
+  }   
+  map.fitBounds(bounds);
+}
 
 mapAjax.findRiders = function(location){
   $.ajax({
@@ -79,8 +106,12 @@ mapAjax.findRides = function(data){
   })
   .done(function(response) {
     console.log('SUCCESS!')
+    // console.log(response);
     debugger;
-    console.log(response);
+    $.each(response, function(index, item){
+      rideLocations.push([item.latitude,item.longitude, item.title, item.ride_distance]);
+    });
+    mapAjax.initialize(rideLocations)
   })
   .fail(function(err) {
     console.log('oops');
