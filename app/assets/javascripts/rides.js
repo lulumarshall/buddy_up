@@ -84,18 +84,18 @@ mapAjax.initialize = function(mapData){
   map.fitBounds(bounds);
 }
 
-mapAjax.findRiders = function(location){
-  $.ajax({
-    url: '/rides', 
-    type: 'GET', 
-    data: {location: {
-      lat: location.k,
-      lng: location.B
-    }},
-    dataType: 'json' 
-  }).success(function(data){
-  })
-}
+// mapAjax.findRiders = function(location){
+//   $.ajax({
+//     url: '/rides', 
+//     type: 'GET', 
+//     data: {location: {
+//       lat: location.k,
+//       lng: location.B
+//     }},
+//     dataType: 'json' 
+//   }).success(function(data){
+//   })
+// }
 mapAjax.findRides = function(data){
   $.ajax({
     url:'/rides/filter_rides',
