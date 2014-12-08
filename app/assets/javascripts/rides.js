@@ -63,8 +63,6 @@ mapAjax.initialize = function(mapData){
   var map = new google.maps.Map(document.getElementById('map-canvas'));
   var bounds = new google.maps.LatLngBounds();
   var infowindow = new google.maps.InfoWindow();
-
-  debugger;
        
   for (var i in mapData) {
     var p = mapData[i];
@@ -77,9 +75,9 @@ mapAjax.initialize = function(mapData){
       title: p[2],
       ride_distance: p[3]
     });
- 
+  
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent(this.ride_distance.toString());
+      infowindow.setContent(this.title);
       infowindow.open(map, this);
     });
   }   
@@ -107,7 +105,6 @@ mapAjax.findRides = function(data){
   .done(function(response) {
     console.log('SUCCESS!')
     // console.log(response);
-    debugger;
     $.each(response, function(index, item){
       rideLocations.push([item.latitude,item.longitude, item.title, item.ride_distance]);
     });
