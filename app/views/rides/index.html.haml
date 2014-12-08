@@ -1,52 +1,58 @@
-%h1 Listing rides
-%button.map Use Current Location!
-%input{name: "address", placeholder: "Enter Address", type: "text", id: 'address'}
+.container-fluid
+  .row
+    .col-xs-1.col-md-3
+    .col-xs-10.col-md-6
+      %h1 Find a Buddy
+      %input{name: "address", placeholder: "Enter Address", type: "text", id: 'address'}
+    .col-xs-1.col-md-3
+  .row
+    .col-xs-1.col-md-3
+    .col-xs-10.col-md-6
+      %form{:role => "form"}
+        .form-group
+          %label{:for => "address"} 
+          %input#addressInput.form-control{:placeholder => "Address of ride", :type => "adress"}
+        .form-group
+          %label{:for => "distance"}
+          %input#distanceInput.form-control{:placeholder => "Distance from buddy", :type => "distance"}
+        .form-group
+          %label{:for => "skill"} Skill
+        .form-group 
+          %label.checkbox-inline
+            %input#inlineCheckbox1{:type => "checkbox", :value => "easy"}easy
+          %label.checkbox-inline
+            %input#inlineCheckbox2{:type => "checkbox", :value => "medium"}medium
+          %label.checkbox-inline
+            %input#inlineCheckbox3{:type => "checkbox", :value => "hard"}hard
+        %button.btn.btn-default.map{:type => "submit"} Use current Location
+        %button.btn.btn-default.address{:type => "submit"} Use input address 
 
-#filter
-  = form_tag "", id: "filter_form" do |f|
-    .field
-      = label_tag :address
-      = text_field_tag :address
-    .field
-      = label_tag :distance
-      = text_field_tag :distance
-    .field
-      = label_tag :address
-      = text_field_tag :address
-    .field
-      = label_tag  :skill
-      %br/
-      = text_field_tag :skill
-    .field
-      = label_tag  :status
-      %br/
-      = text_field_tag :status
-    .actions
-      = submit_tag
+    .col-xs-1.col-md-3
+  .row
+    .col-xs-12
+      %table
+        %tr
+          %th Title
+          %th Length
+          %th Address
+          %th Skill
+          %th Status
 
-%table
-  %tr
-    %th Title
-    %th Length
-    %th Address
-    %th Skill
-    %th Status
+        - @rides.each do |ride|
+          %tr
+            %td= ride.title
+            %td= ride.ride_distance
+            %td= ride.address
+            %td= ride.skill
+            %td= ride.status
+            %td
+              = link_to 'Send Message', new_message_path(:receiver => Cycle.where(ride_id: ride.id.to_s).first.user_id), id: 'new_message'
+            %td= link_to 'Show', ride
+            %td= link_to 'Edit', edit_ride_path(ride)
+            %td= link_to 'Destroy', ride, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-  - @rides.each do |ride|
-    %tr
-      %td= ride.title
-      %td= ride.distance
-      %td= ride.address
-      %td= ride.skill
-      %td= ride.status
-      %td
-        = link_to 'Send Message', new_message_path(:receiver => Cycle.where(ride_id: ride.id.to_s).first.user_id), id: 'new_message'
-      %td= link_to 'Show', ride
-      %td= link_to 'Edit', edit_ride_path(ride)
-      %td= link_to 'Destroy', ride, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %br
 
-%br
-
-= link_to 'New Ride', new_ride_path
-= link_to 'New Location', new_location_path
-#map-canvas{style: "height: 500px; width: 500px; background-color: white"}
+      = link_to 'New Ride', new_ride_path
+      = link_to 'New Location', new_location_path
+      #map-canvas{style: "height: 500px; width: 500px; background-color: white"}

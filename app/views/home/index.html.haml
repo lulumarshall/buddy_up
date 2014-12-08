@@ -1,0 +1,11 @@
+.container-fluid
+  .row
+    .col-xs-3
+    .col-xs-6
+      .center-block
+        %button.btn.btn-default.sign_in{:type=>'button'}
+          =link_to 'Login', new_user_session_path 
+        %button.btn.btn-default.sign_in{:type=>'button'}
+          =link_to 'Sign up', new_user_registration_path 
+    .col-xs-3
+      

@@ -1,9 +1,9 @@
 BuddyUpApp::Application.routes.draw do
   resources :locations
 
-
+  match 'rides/filter_rides' => 'rides#filter_rides'
   resources :rides
-
+  
 
   resources :relationships
 
@@ -15,7 +15,7 @@ BuddyUpApp::Application.routes.draw do
 
   
 
-  root :to => 'rides#index'
+  root :to => 'home#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -3,7 +3,7 @@ class Message < ActiveRecord::Base
   belongs_to :sender, class_name: "User"
   belongs_to :reciever, class_name: "User"
 
-  scope :sent_messages, lambda{|name| where(sender_id: 'name')}
+ 
   scope :received_messages, lambda{|name| where(receiver_id: 'name')}
   
   def self.receiver_object(message) 

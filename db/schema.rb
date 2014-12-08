@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141206154515) do
+ActiveRecord::Schema.define(:version => 20141208124607) do
 
   create_table "cycles", :force => true do |t|
     t.string   "user_id"
@@ -57,13 +57,13 @@ ActiveRecord::Schema.define(:version => 20141206154515) do
 
   create_table "rides", :force => true do |t|
     t.string   "title"
-    t.float    "distance"
+    t.float    "ride_distance"
     t.float    "start_lat"
     t.float    "start_lng"
     t.string   "skill"
     t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"

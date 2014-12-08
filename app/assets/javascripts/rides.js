@@ -69,29 +69,52 @@ mapAjax.findRiders = function(location){
     }},
     dataType: 'json' 
   }).success(function(data){
-    debugger;
   })
+}
+mapAjax.findRides = function(data){
+  $.ajax({
+    url:'/rides/filter_rides',
+    type: 'Get',
+    data: data
+  })
+  .done(function(response) {
+    console.log('SUCCESS!')
+    debugger;
+    console.log(response);
+  })
+  .fail(function(err) {
+    console.log('oops');
+    console.log(err);   
+  });
 }
 
 $(document).ready(function(){
   console.log('dom loaded')
   $('.map').on('click', function(event){
+    event.preventDefault();
+    var data = {}
+    data.distance =$('#distanceInput').val()
+    data.address =$('#addressInput').val()
     navigator.geolocation.getCurrentPosition(function(location){
-      console.log()
-      var currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
-      mapAjax.drawMap(currentLocation)
+      data.currentLocation = location.coords;
+      // navigator.geolocation.getCurrentPosition(function(location){
+      //   var currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
+      //   mapAjax.drawMap(currentLocation)
+      // })
+     
+      mapAjax.findRides(data);
     })
   });
-
+  
   $('#address').on('keypress', function(){
     if(event.which== '13'){
       var location = $(this).val()
       mapAjax.geocodeAddress(location)
     };
   });
-  $('#filter_form').on('submit', function(event){
+  $('#address').on('click', function(event){
   event.preventDefault();
-  debugger;
+
     });
 })
 

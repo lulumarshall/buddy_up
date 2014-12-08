@@ -4,5 +4,6 @@ class Ride < ActiveRecord::Base
   has_many :users, through: :cycles
 
   geocoded_by :address
-  after_validation :geocode
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :geocode, :reverse_geocode
 end
