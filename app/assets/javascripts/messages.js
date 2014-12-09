@@ -3,6 +3,7 @@ messageAjax = {
 }
 
 messageAjax.allMessages = function(){
+  $("#all_messages table tbody").empty('');
   $.ajax({
     url: '/messages', 
     type: 'GET' 
@@ -13,13 +14,19 @@ messageAjax.allMessages = function(){
     var row = $("<tr>"+
       "<td>" + item.sender_id+"</td>"+
       "<td>" + item.receiver_id+"</td>"+
-      "<td>" + item.subject +"</td>")
+      "<td>" + item.subject +"</td>"+
+      "<td>" + "<a class='btn btn-default' href='/messages/"+item.message_id+"'>show</a>"+"</td>" +
+      "<td>" + "<a class='btn btn-default' href='/messages/"+item.message_id+"/edit'>edit</a>"+"</td>" +
+      "<td><%= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>"
+      )
+
     row.appendTo("#all_messages table tbody")
     });
   });
 };
 
  messageAjax.sentMessages = function(){
+  $("#all_messages table tbody").empty('');
   $.ajax({
     url:'/messages/sent',
     type: 'GET'
@@ -35,6 +42,7 @@ messageAjax.allMessages = function(){
   })
  }
  messageAjax.receivedMessages = function(){
+  $("#all_messages table tbody").empty('');
   $.ajax({
     url: '/messages/received',
     type: 'GET'

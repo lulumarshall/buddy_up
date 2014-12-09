@@ -1,9 +1,9 @@
 %div.receiver
   To
-  =@receiver_object.name
+  =@receiver_details.name
 %div.sender
   From
-  =@sender_object.name
+  =@sender_details.name
   
 = form_for @message do |f|
   - if @message.errors.any?
@@ -15,10 +15,10 @@
 
   .field
     - f.label :sender_id
-    = f.text_field :sender_id, value: @sender_object.id, type: 'hidden'
+    = f.text_field :sender_id, value: @sender_details.id, type: 'hidden'
   .field
     - f.label :receiver_id
-    = f.text_field :receiver_id, value: @receiver_object.id, type: 'hidden'
+    = f.text_field :receiver_id, value: @receiver_details.id, type: 'hidden'
   .field
     - f.label :subject
     = f.text_field :subject, placeholder: 'title'

@@ -5,10 +5,8 @@ class MessagesController < ApplicationController
   respond_to :html, :json, :js
   
   def index
-    @messages = Message.all
-    @users = User.all
+    @messages = User.user_messages(current_user)
     render json: @messages and return if request.xhr?
-    render json: @users and return if request.xhr?
   end
 
   def sent
@@ -28,14 +26,15 @@ class MessagesController < ApplicationController
   end
 
   def new
-
-    @receiver_object = User.find(params[:receiver])
-    @sender_object = current_user
+    @receiver_details = User.find(params[:receiver])
+    @sender_details = current_user
     @message = Message.new
     respond_with(@message)
   end
 
   def edit
+    @receiver_details = Message.receiver_object(@message)
+    @sender_details = Message.sender_object(@message)
   end
 
   def create

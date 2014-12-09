@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed 
   has_many :followers, through: :passive_relationships, source: :follower 
 
-  has_many :sent_messages, class_name: "Messages", foreign_key: 'sender_id', dependent: :destroy
-  has_many :received_messages, class_name: "Messages", foreign_key: 'reciever_id', dependent: :destroy
+  has_many :sent_messages, class_name: "Message", foreign_key: 'sender_id', dependent: :destroy
+  has_many :received_messages, class_name: "Message", foreign_key: 'receiver_id', dependent: :destroy
   has_many :senders, through: :sent_messages, source: :sender
   has_many :receivers, through: :received_messages, source: :receiver
 
@@ -48,6 +48,22 @@ class User < ActiveRecord::Base
         user.skip_confirmation! if user.respond_to?(:skip_confirmation!) # don't require email confirmation
  
       end
+    end
+  end
+
+  def self.user_messages(user) 
+ (user.received_messages.push user.sent_messages).map do |m|
+      {sender_name: m.sender.name,
+        content: m.content,
+        receiver_name: m.receiver.name,
+        subject: m.subject, 
+        receiver_id: m.receiver_id,
+        sender_id: m.sender_id, 
+        message_id: m.id, 
+        created_at: m.created_at,
+        sender_email: m.sender.email,
+        receiver_email: m.receiver.email
+      }
     end
   end
 
