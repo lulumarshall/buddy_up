@@ -82,6 +82,5 @@ class User < ActiveRecord::Base
   def get_info(access_token)
    @client = Strava::Api::V3::Client.new(:access_token => access_token)
    response = @client.segment_explorer bounds: "37.821362,-122.505373,37.842038,-122.465977"
-
   end
 end

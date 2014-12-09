@@ -1,0 +1,22 @@
+.container-fluid
+  .row
+    .col-xs-1.col-md-3
+    .col-xs-10.col-md-6
+      %h1 Find Strava Routes
+    .col-xs-1.col-md-3
+  .row
+    .col-xs-1.col-md-3
+    .col-xs-10.col-md-6
+      %form{:role => "form"}
+        .form-group
+          %label{:for => "address"} 
+          %input#addressInput.form-control{:placeholder => "Address of ride", :type => "adress"}
+        .form-group
+          %label{:for => "ride_distance"}
+          %input#distanceInput.form-control{:placeholder => "Distance from start of ride", :type => "ride_distance"}
+        %button.btn.btn-default.strava{:type => "submit"} Use current Location
+        %button.btn.btn-default.address{:type => "submit"} Use input address 
+    .col-xs-1.col-md-3
+#map-canvas{style: "height: 500px; width: 500px; background-color: white"}
+
+=render 'strava_response'

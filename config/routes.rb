@@ -3,7 +3,8 @@ BuddyUpApp::Application.routes.draw do
 
   match 'rides/filter_rides' => 'rides#filter_rides'
   resources :rides
-  
+  match 'strava' => 'strava_routes#search'
+  match 'strava/routes' => 'strava_routes#routes'
 
   resources :relationships
 
