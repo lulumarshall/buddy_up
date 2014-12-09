@@ -2,26 +2,4 @@
 %h1 Listing messages
 = link_to 'Sent', messages_path(:sent => 'sent'), id: 'sent_message', class: 'btn'
 = link_to 'Received', messages_path(:received => 'received'), id: 'received_message', class: 'btn'
-
-%table
-  %tr
-    %th Sender
-    %th Receiver
-    %th Subject
-    %th 
-    %th 
-    %th 
-
-  
-  - @messages.each do |message|
-    %tr
-      %td= message.sender_id
-      %td= message.receiver_id
-      %td= message.subject
-      %td= link_to 'Show', message
-      %td= link_to 'Edit', edit_message_path(message)
-      %td= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Message', new_message_path
+=render 'message'

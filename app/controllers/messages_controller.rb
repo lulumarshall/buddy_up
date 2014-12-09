@@ -6,7 +6,19 @@ class MessagesController < ApplicationController
   
   def index
     @messages = Message.all
-    respond_with(@messages)
+    @users = User.all
+    render json: @messages and return if request.xhr?
+    render json: @users and return if request.xhr?
+  end
+
+  def sent
+    @sent = Message.where(sender_id: current_user)
+    render json: @sent and return if request.xhr?
+  end
+
+  def received
+    @received = Message.where(receiver_id: current_user)
+    render json: @received and return if request.xhr?
   end
 
   def show

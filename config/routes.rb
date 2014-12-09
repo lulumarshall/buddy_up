@@ -7,7 +7,8 @@ BuddyUpApp::Application.routes.draw do
 
   resources :relationships
 
-
+  match 'messages/sent' => 'messages#sent'
+  match 'messages/received' => 'messages#received'
   resources :messages
 
 
@@ -16,6 +17,7 @@ BuddyUpApp::Application.routes.draw do
   
 
   root :to => 'home#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
