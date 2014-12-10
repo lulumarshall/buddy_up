@@ -62,7 +62,7 @@ stravaMap.initialize = function(mapData){
       var contentString = "<h3>"+ p[2] +"</h3>"+
       "<ul><li><span>Average grade: </span>" + p[4] +"</li>"+
       "<li><span>Distance: </span>"+p[5]+"meters</li>"+
-      "<li><a href= 'http://www.strava.com/segments/"+ p[3] + "'>Get route info </a></li></ul>"
+      "<li><a href= 'http://www.strava.com/segments/"+ p[3] + "' target='_blank'>Get route info </a></li></ul>"
       infowindow.setContent(contentString);
       infowindow.open(map, this);
     });
