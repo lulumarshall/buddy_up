@@ -38,6 +38,8 @@ stravaMap.initialize = function(mapData){
   var map = new google.maps.Map(document.getElementById('map-canvas'));
   var bounds = new google.maps.LatLngBounds();
   var infowindow = new google.maps.InfoWindow();
+  // var directionsDisplay;
+  // var directionsService = new google.maps.DirectionsService();
        
   for (var i in mapData) {
     var p = mapData[i];
