@@ -30,26 +30,7 @@
     .col-xs-1.col-md-3
   .row
     .col-xs-12
-      %table
-        %tr
-          %th Title
-          %th Length
-          %th Address
-          %th Skill
-          %th Status
-
-        - @rides.each do |ride|
-          %tr
-            %td= ride.title
-            %td= ride.ride_distance
-            %td= ride.address
-            %td= ride.skill
-            %td= ride.status
-            %td
-              = link_to 'Send Message', new_message_path(:receiver => Cycle.where(ride_id: ride.id.to_s).first.user_id), id: 'new_message'
-            %td= link_to 'Show', ride
-            %td= link_to 'Edit', edit_ride_path(ride)
-            %td= link_to 'Destroy', ride, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      =render 'ride_response'
 
       %br
 
