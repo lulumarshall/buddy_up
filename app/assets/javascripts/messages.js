@@ -78,6 +78,7 @@ $(document).ready(function(){
   $(".all_messages").on('click', function(event){
  event.preventDefault();
  console.log('clicked on message')
+ $('.slide-table').slideDown("slow");
  messageAjax.allMessages()
   });
 

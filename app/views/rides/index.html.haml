@@ -3,7 +3,6 @@
     .col-xs-1.col-md-3
     .col-xs-10.col-md-6
       %h1 Find a Buddy
-      %input{name: "address", placeholder: "Enter Address", type: "text", id: 'address'}
     .col-xs-1.col-md-3
   .row
     .col-xs-1.col-md-3
@@ -28,6 +27,7 @@
         %button.btn.btn-default.address{:type => "submit"} Use input address 
 
     .col-xs-1.col-md-3
+    #map-canvas{style: "height: 500px; width: 500px; background-color: white"}
   .row
     .col-xs-12
       =render 'ride_response'
@@ -36,4 +36,4 @@
 
       = link_to 'New Ride', new_ride_path
       = link_to 'New Location', new_location_path
-      #map-canvas{style: "height: 500px; width: 500px; background-color: white"}
+      

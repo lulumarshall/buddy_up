@@ -80,6 +80,7 @@ $(document).ready(function(){
     navigator.geolocation.getCurrentPosition(function(location){
       data.currentLocation = location.coords;
       stravaMap.findStravaRoutes(data);
+    $('.slide-table').slideDown("slow");
     });
   });
 });

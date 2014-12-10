@@ -42,6 +42,7 @@ mapAjax.initialize = function(mapData){
 }
 
 mapAjax.findRides = function(data){
+  $('#ride_response table tbody').empty('');
   $.ajax({
     url:'/rides/filter_rides',
     type: 'Get',
@@ -80,21 +81,12 @@ $(document).ready(function(){
       //   var currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
       //   mapAjax.drawMap(currentLocation)
       // })
-     
+    $('.slide-table').slideDown("slow");
+
       mapAjax.findRides(data);
     })
-  });
-  
-  $('#address').on('keypress', function(){
-    if(event.which== '13'){
-      var location = $(this).val()
-      mapAjax.geocodeAddress(location)
-    };
-  });
-  $('#address').on('click', function(event){
-  event.preventDefault();
 
-    });
+  });
 })
 
 
