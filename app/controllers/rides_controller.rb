@@ -13,9 +13,11 @@ class RidesController < ApplicationController
 
   def filter_rides
     if params[:address] == ""
-      @filter_rides = Ride.near([params[:currentLocation][:latitude].to_f, params[:currentLocation][:longitude].to_f] , params[:distance].to_i, :order => :distance)
+      @filter = Ride.near([params[:currentLocation][:latitude].to_f, params[:currentLocation][:longitude].to_f] , params[:distance].to_i, :order => :distance)
+      @filter_rides = Ride.location_info(@filter)
     else 
-      @filter_rides = Ride.near(params[:address], params[:distance].to_i, :order => :distance)
+      @filter = Ride.near(params[:address], params[:distance].to_i, :order => :distance)
+      @filter_rides = Ride.location_info(@filter)
     end 
     render json: @filter_rides 
   end
