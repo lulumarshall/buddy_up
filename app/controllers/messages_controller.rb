@@ -13,7 +13,6 @@ class MessagesController < ApplicationController
     # else 
     @messages = User.user_messages(current_user)
     render json: @messages and return if request.xhr?
-    end
     
   end
 
