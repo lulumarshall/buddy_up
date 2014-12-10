@@ -81,7 +81,7 @@ $(document).ready(function(){
       //   var currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
       //   mapAjax.drawMap(currentLocation)
       // })
-    $('.slide-table').slideDown("slow");
+    $('.slide-table').slideDown();
 
       mapAjax.findRides(data);
     })

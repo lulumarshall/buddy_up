@@ -5,17 +5,25 @@ class MessagesController < ApplicationController
   respond_to :html, :json, :js
   
   def index
+    if params[:class] == nil
+    a = Messages.where(sender_id: current_user)
+    b = Message.where(receiver_id: current_user)
+    @messages = a.push b 
+    respond_with(@message)
+    else 
     @messages = User.user_messages(current_user)
     render json: @messages and return if request.xhr?
+    end
+    
   end
 
   def sent
-    @sent = Message.where(sender_id: current_user)
+    @sent = User.sent_messages(current_user)
     render json: @sent and return if request.xhr?
   end
 
   def received
-    @received = Message.where(receiver_id: current_user)
+    @received = User.received_messages(current_user)
     render json: @received and return if request.xhr?
   end
 
@@ -50,7 +58,6 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    binding.pry
     @message.destroy
     respond_with(@message)
   end

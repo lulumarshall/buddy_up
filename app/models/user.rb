@@ -66,7 +66,36 @@ class User < ActiveRecord::Base
       }
     end
   end
-
+   def self.sent_messages(user) 
+      user.sent_messages.map do |m|
+       {sender_name: m.sender.name,
+         content: m.content,
+         receiver_name: m.receiver.name,
+         subject: m.subject, 
+         receiver_id: m.receiver_id,
+         sender_id: m.sender_id, 
+         message_id: m.id, 
+         created_at: m.created_at,
+         sender_email: m.sender.email,
+         receiver_email: m.receiver.email
+       }
+     end
+   end
+   def self.received_messages(user) 
+    user.received_messages.map do |m|
+       {sender_name: m.sender.name,
+         content: m.content,
+         receiver_name: m.receiver.name,
+         subject: m.subject, 
+         receiver_id: m.receiver_id,
+         sender_id: m.sender_id, 
+         message_id: m.id, 
+         created_at: m.created_at,
+         sender_email: m.sender.email,
+         receiver_email: m.receiver.email
+       }
+     end
+   end
   def self.strava_username(auth)
     [auth.info.firstname, auth.info.lastname].compact.join(" ")
   end
