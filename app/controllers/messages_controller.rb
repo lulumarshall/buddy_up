@@ -50,6 +50,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    binding.pry
     @message.destroy
     respond_with(@message)
   end

@@ -1,7 +1,6 @@
 .container-fluid
   .row
-    .col-xs-1.col-md-3 
-    .col-xs-10.col-md-6.log_in_box
+    .col-xs-12.col-md-12.log_in_box
       %h2 Log in
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
@@ -18,10 +17,7 @@
             = f.label :remember_me
         .actions
           = f.submit "Log in"
-      .col-xs-1.col-md-6 
       .clearfix.visible-xs-block
-      .col-xs-1.col-md-1 
-      .col-xs-10.col-md-10.bottom_sign_up
-        = render "devise/shared/links"
-      .col-xs-1.col-md-1 
+      = render "devise/shared/links"
+
 

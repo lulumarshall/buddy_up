@@ -13,14 +13,15 @@ stravaMap.findStravaRoutes = function(data){
     console.log('yo');
     $.each(data,function(index, item){
       console.log(index, item);
-      rideLocations.push([item.start_latlng[0],item.start_latlng[1], item.name]);
+      rideLocations.push([item.start_latlng[0],item.start_latlng[1], item.name, item.id, item.avg_grade, item.distance]);
       var row = $("<tr>"+
         "<td>" + item.name+"</td>"+
         "<td>" + item.start_latlng[0]+"</td>"+
         "<td>" + item.start_latlng[1] +"</td>"+
         "<td>" + item.avg_grade +"</td>"+
         "<td>" + item.end_latlng[0] +"</td>"+
-        "<td>" + item.end_latlng[1] +"</td>")
+        "<td>" + item.end_latlng[1] +"</td>"+
+        "<td><a class='btn' href= 'http://www.strava.com/segments/"+ item.id + "'>Get more info </a></td>")
       row.appendTo("#strava_response table tbody")
     });
     stravaMap.initialize(rideLocations)
@@ -37,10 +38,8 @@ stravaMap.findStravaRoutes = function(data){
 stravaMap.initialize = function(mapData){
   var map = new google.maps.Map(document.getElementById('map-canvas'));
   var bounds = new google.maps.LatLngBounds();
-  var infowindow = new google.maps.InfoWindow();
-  // var directionsDisplay;
-  // var directionsService = new google.maps.DirectionsService();
-       
+  
+
   for (var i in mapData) {
     var p = mapData[i];
     var latlng = new google.maps.LatLng(p[0], p[1]);
@@ -50,10 +49,21 @@ stravaMap.initialize = function(mapData){
       position: latlng,
       map: map,
       title: p[2],
+      customData: p
     });
-  
+    
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent(this.title);
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        maxWidth: 200
+          }); 
+
+      var p = this.customData
+      var contentString = "<h1>"+ p[2] +"</h1>"+
+      "<ul><li><span>Average grade: </span>" + p[4] +"</li>"+
+      "<li><span>Distance: </span>"+p[5]+"meters</li>"+
+      "<li><a href= 'http://www.strava.com/segments/"+ p[3] + "'>Get route info </a></li></ul>"
+      infowindow.setContent(contentString);
       infowindow.open(map, this);
     });
   }   
