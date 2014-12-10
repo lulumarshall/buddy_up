@@ -21,7 +21,7 @@ stravaMap.findStravaRoutes = function(data){
         "<td>" + item.avg_grade +"</td>"+
         "<td>" + item.end_latlng[0] +"</td>"+
         "<td>" + item.end_latlng[1] +"</td>"+
-        "<td><a class='btn' href= 'http://www.strava.com/segments/"+ item.id + "'>Get more info </a></td>")
+        "<td><a class='btn' href= 'http://www.strava.com/segments/"+ item.id + "' target='_blank'>Get more info </a></td>")
       row.appendTo("#strava_response table tbody")
     });
     stravaMap.initialize(rideLocations)
