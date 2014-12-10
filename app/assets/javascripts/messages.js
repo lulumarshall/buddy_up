@@ -17,7 +17,7 @@ messageAjax.allMessages = function(){
       "<td>" + item.subject +"</td>"+
       "<td>" + "<a class='btn btn-default' href='/messages/"+item.message_id+"'>show</a>"+"</td>" +
       "<td>" + "<a class='btn btn-default' href='/messages/"+item.message_id+"/edit'>edit</a>"+"</td>" +
-      "<td><%= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>"
+      "<td><a class='btn btn-default' id='delete-message' href='/messages/" + item.message_id + "' data-method='delete' data-confirm='Are you sure?'>Delete</a></td>"
       )
 
     row.appendTo("#all_messages table tbody")
@@ -65,6 +65,11 @@ $(document).ready(function(){
  event.preventDefault();
  console.log('clicked on message')
  messageAjax.allMessages()
+  });
+
+  $("body").on('click', "#delete-message", function(event){
+    event.preventDefault();
+    console.log('deleted message')
   });
 
    $(".sent_messages").on('click', function(event){
