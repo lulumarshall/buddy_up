@@ -5,12 +5,12 @@ class MessagesController < ApplicationController
   respond_to :html, :json, :js
   
   def index
-    if params[:class] == nil
-    a = Messages.where(sender_id: current_user)
-    b = Message.where(receiver_id: current_user)
-    @messages = a.push b 
-    respond_with(@message)
-    else 
+    # if params[:class] == nil
+    # a = Messages.where(sender_id: current_user)
+    # b = Message.where(receiver_id: current_user)
+    # @messages = a.push b 
+    # respond_with(@message)
+    # else 
     @messages = User.user_messages(current_user)
     render json: @messages and return if request.xhr?
     end
