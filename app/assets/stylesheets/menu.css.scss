@@ -3,14 +3,59 @@
   color: black;
   &:hover{
     color:purple;
-  }
+    }
   }
 }
+
 @media (min-width: 1000px) {
   .navbar-default .navbar-nav > li > a {
   color: white;
   &:hover{
     color:purple;
+    }
   }
+}
+
+@media screen and (max-width: 767px) {
+  .tarmac{
+    background-image: none!important;
+  } 
+}
+
+@media (min-width: 1000px) {
+  .tarmac-mobile{
+    background-image: none!important
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .tarmac{
+    background-image: none!important;
+  } 
+}
+@media screen and (max-width: 520px) {
+  .strava{
+    width:276px;
+    margin-left: 0%;
+  } 
+}
+
+@media (min-width: 520px) {
+  .strava{
+    width:370px;
+    margin-left:21%;
+  }
+}
+@media screen and (max-width: 520px) {
+  .map{
+    width:276px;
+    margin-left: 0%;
+  } 
+}
+
+@media (min-width: 520px) {
+  .map{
+    width:370px;
+    margin-left:21%;
   }
 }

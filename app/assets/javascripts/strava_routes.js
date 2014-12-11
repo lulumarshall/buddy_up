@@ -76,6 +76,10 @@ $(document).ready(function(){
     event.preventDefault();
     var data = {}
     data.distance =$('#distanceInput').val()
+    if (data.distance==null || data.distance=="") {
+        alert("Distance needs to be filled in");
+        return false;
+    }
     data.address =$('#addressInput').val()
     navigator.geolocation.getCurrentPosition(function(location){
       data.currentLocation = location.coords;

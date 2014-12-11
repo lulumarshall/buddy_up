@@ -9,32 +9,28 @@
     .col-xs-10.col-md-6
       %form{:role => "form"}
         .form-group
-          %label{:for => "address"} 
-          %input#addressInput.form-control{:placeholder => "Address of ride", :type => "adress"}
+          %label{:for => "address", :name => 'buddyform'} 
+          %input#addressInput.form-control{:placeholder => "Address if you don't want to use current location", :type => "address", :name => 'address'}
         .form-group
           %label{:for => "ride_distance"}
           %input#distanceInput.form-control{:placeholder => "Distance from buddy", :type => "ride_distance"}
-        .form-group
-          %label{:for => "skill"} Skill
-        .form-group 
-          %label.checkbox-inline
-            %input#inlineCheckbox1{:type => "checkbox", :value => "easy"}easy
-          %label.checkbox-inline
-            %input#inlineCheckbox2{:type => "checkbox", :value => "medium"}medium
-          %label.checkbox-inline
-            %input#inlineCheckbox3{:type => "checkbox", :value => "hard"}hard
-        %button.btn.btn-default.map{:type => "submit"} Use current Location
-        %button.btn.btn-default.address{:type => "submit"} Use input address 
+        / .form-group
+        /   %label{:for => "skill"} Skill
+        / .form-group 
+        /   %label.checkbox-inline
+        /     %input#inlineCheckbox1{:type => "checkbox", :value => "easy"}easy
+        /   %label.checkbox-inline
+        /     %input#inlineCheckbox2{:type => "checkbox", :value => "medium"}medium
+        /   %label.checkbox-inline
+        /     %input#inlineCheckbox3{:type => "checkbox", :value => "hard"}hard
+        %button.btn.btn-primary.map{:type => "submit"} Find a buddy
 
     .col-xs-1.col-md-3
-    
-    #map-canvas{style: "height: 500px; width: 500px; background-color: white"}
+    .col-xs-12.col-md-12#map-canvas
   .row
     .col-xs-12
       =render 'ride_response'
 
       %br
 
-      = link_to 'New Ride', new_ride_path
-      = link_to 'New Location', new_location_path
-      
+  

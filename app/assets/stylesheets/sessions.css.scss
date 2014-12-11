@@ -1,14 +1,30 @@
 body{
+  background-color: #f5f5f5;
   .title-all{
     color:white;
   }
   .tarmac{
     background-image: url("road_banner.jpg");
-    background-repeat: repeat;
+    background-repeat: repeat;  
+    // min-height: 110px;
+    // max-height: 110px;
+    position:relative;
+  }
+
+  .tarmac-mobile{
+    background-image: url("road_banner.jpg");
+    background-repeat: repeat;  
+    // min-height: 110px;
+    // max-height: 110px;
+    position:relative;
+  }
+  .tarmac-footer{
+    background-image: url("road_banner.jpg");
+    background-repeat: repeat;  
     min-height: 110px;
     max-height: 110px;
     position:relative;
-  }
+}
   .sessions-new{
     margin-left: 5%;
     margin-right: 5%;
@@ -31,7 +47,9 @@ body{
       }
 
     }
-
+    .btn-cancel{
+      width:88%;
+    }
     .button-provider{
       background-image: url(/assets/ConnectWithStrava.png);
       background-repeat: no-repeat;
@@ -42,6 +60,19 @@ body{
       margin-left:8%;
       &:hover { 
         opacity:0.7; 
+      }
+    }
+      .strava-edit{
+        background-image: url(/assets/ConnectWithStrava.png);
+        background-repeat: no-repeat;
+        height: 30px;
+        display: block;
+        width:170px;
+        margin-top:3%;
+        margin-left:15%;
+        margin-bottom:2%;
+        &:hover { 
+          opacity:0.7;  
       }
     }
   }

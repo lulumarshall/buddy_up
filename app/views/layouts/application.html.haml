@@ -19,8 +19,8 @@
           - flash.each do |name, msg|
             = content_tag :div, msg, class: "alert alert-#{name}" do
               = msg
-          %nav.navbar-header 
-            %h1.title-all.col-xs-12.text-center 
+          .navbar-header.tarmac-mobile
+            %h1.title-all.col-xs-12.text-center
               BuddyUp
               %br 
               Cycle
@@ -69,7 +69,7 @@
        
       = yield
     
-    #footer.tarmac
+    #footer.tarmac-footer
       .bike-result-1.bike-image
       .bike-result-2.bike-image
       .bike-result-3.bike-image
