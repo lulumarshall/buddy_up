@@ -14,14 +14,16 @@
 
   %body
     .wrap
-      %nav.navbar.navbar-default{role: 'navigation'}
+      %nav.navbar.navbar-default.tarmac{role: 'navigation'}
         .container-fluid
           - flash.each do |name, msg|
             = content_tag :div, msg, class: "alert alert-#{name}" do
               = msg
-          %nav.navbar-header
-            %a.navbar-brand
-              %img{alt: 'Buddy Up', src: ''}
+          %nav.navbar-header 
+            %h1.title-all.col-xs-12.text-center 
+              BuddyUp
+              %br 
+              Cycle
           -if user_signed_in?
             %button.navbar-toggle.collapsed{:type=> 'button', 'data-toggle'=>'collapse', 'data-target'=>'#bs-example-navbar-collapse-1'}
               %span.sr-only Toggle navigation 
@@ -66,11 +68,15 @@
                     %li=link_to "Received", messages_path
        
       = yield
-    #footer
+    
+    #footer.tarmac
+      .bike-result-1.bike-image
+      .bike-result-2.bike-image
+      .bike-result-3.bike-image
+      .bike-result-4.bike-image
       .container
-        %p.text-muted.credit.text-center
-          Buddy Up Cycle courtesy
-          %a{:href => "http://lulumarshall.co.uk"} Lulu Marshall
+        %p.credit.text-center
+          Buddy Up Cycle courtesy of Lulu Marshall
           
 
    

@@ -1,0 +1,16 @@
+@media screen and (max-width: 767px) {
+  .navbar-default .navbar-nav > li > a {
+  color: black;
+  &:hover{
+    color:purple;
+  }
+  }
+}
+@media (min-width: 1000px) {
+  .navbar-default .navbar-nav > li > a {
+  color: white;
+  &:hover{
+    color:purple;
+  }
+  }
+}

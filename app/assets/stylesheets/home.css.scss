@@ -1,7 +1,47 @@
+@-webkit-keyframes racerbike {
+  0%   {top:-102px; left: -500px;}
+  100% {top: -102px; left: 1500px;}
+}
+@-webkit-keyframes mybike {
+  0%   {top:-92px; left: -500px;}
+  100% {top: -92px; left: 1500px;}
+}
+@-webkit-keyframes myreversebike {
+  0%   {top:-88px; right: -500px;}
+  100% {top: -88px; right: 1500px;}
+}
 body{
-    .sign_in{
-      margin-bottom:5%;
-      margin-top:10%;
-      margin-left:20%
+  .sign-in{
+    width:30%;
+    margin-top:4%;
+    margin-bottom:8%;
+    margin-left:31%;
+    .sign-up{
+      margin-bottom:4px;
+      white-space: normal;
     }
+  }
+  .bike-image{
+    background-size: 100px 100px;
+    margin:0 auto;
+    width: 100px;
+    height: 100px;
+    position: absolute; 
+    background-repeat: no-repeat;
+  }
+
+  .bike-result-1{
+    background-image: url('girlbiker.png');
+    -webkit-animation: racerbike 20s infinite;
+  }
+  .bike-result-2{
+  background-image: url('superhero-on-a-bike.png');
+  -webkit-animation: myreversebike 10s infinite;
+
+  }
+  .bike-result-3{
+    background-image: url('girl-on-bicycle.png');
+    -webkit-animation: mybike 30s infinite;
+  }
+
 }

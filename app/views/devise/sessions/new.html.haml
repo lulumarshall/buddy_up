@@ -1,6 +1,7 @@
 .container-fluid
-  .row
-    .col-xs-12.col-md-12.log_in_box
+  .row.sessions-new
+    .col-s-2.col-md-4
+    .col-xs-12.col-s-8.col-md-4.log_in_box
       %h2 Log in
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
@@ -12,12 +13,16 @@
           %br/
           = f.password_field :password, autocomplete: "off"
         - if devise_mapping.rememberable?
-          .field
+          .field.remember-me
             = f.check_box :remember_me
             = f.label :remember_me
+          - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+            = link_to "Forgot your password?", new_password_path(resource_name), :class => "forgot-password muted"
+            %br/
         .actions
-          = f.submit "Log in"
+          = f.submit "Log in", :class =>"btn btn-primary btn-block"
       .clearfix.visible-xs-block
+      .col-s-2.col-md-4
       = render "devise/shared/links"
 
 
