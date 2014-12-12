@@ -30,7 +30,6 @@ messageAjax.allMessages = function(){
   }).success(function(response){
     $.each(response,function(index, item){
       console.log(index, item);
-      debugger;
       var row = $("<tr>"+
         "<td>" + item.sender_name+"</td>"+
         "<td>" + item.subject +"</td>"+
@@ -49,7 +48,7 @@ messageAjax.allMessages = function(){
     $.each(response,function(index, item){
       console.log(index, item);
       var row = $("<tr>"+
-        "<td>" + item.sender_name+"</td>"+
+        "<td>" + item.receiver_name+"</td>"+
         "<td>" + item.subject +"</td>"+
         "<td>" + "<a class='btn btn-default' href='/messages/"+item.message_id+"'>show</a><a class='btn btn-default' href='/messages/"+item.message_id+"/edit'>edit</a><button class='btn btn-default' id='delete-message' data-id='" + item.message_id + "' data-confirm='Are you sure?'>Delete</button></td>"
         )
