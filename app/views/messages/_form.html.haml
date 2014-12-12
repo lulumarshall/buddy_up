@@ -1,9 +1,8 @@
 %div.receiver
-  To
-  =@receiver_details.name
-%div.sender
-  From
-  =@sender_details.name
+  %h3
+    To
+    %h4
+      =@receiver_details.name
   
 = form_for @message do |f|
   - if @message.errors.any?
@@ -21,9 +20,9 @@
     = f.text_field :receiver_id, value: @receiver_details.id, type: 'hidden'
   .field
     - f.label :subject
-    = f.text_field :subject, placeholder: 'title'
+    = f.text_field :subject, id: 'ride-input', placeholder: 'title'
   .field
     - f.label :content
-    = f.text_area :content, placeholder: 'content'
+    = f.text_area :content, id: 'ride-input', placeholder: 'content'
   .actions
-    = f.submit 'Send'
+    = f.submit 'Send', :class => 'btn-primary btn btn-block'

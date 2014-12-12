@@ -1,7 +1,18 @@
-
-%h1 Messages
-= link_to 'All', messages_path(:all => 'all'), id: 'all_message', class: 'btn all_messages'
-= link_to 'Sent', messages_path(:sent => 'sent'), id: 'sent_message', class: 'btn sent_messages'
-= link_to 'Received', messages_path(:received => 'received'), id: 'received_message', class: 'btn received_messages'
-=render 'messages'
+.container-fluid
+  .row.messages-index
+    .col-xs-12.text-center
+      %h1 
+        Messages
+      .col-xs-4
+        = link_to 'All', messages_path(:all => 'all'), id: 'all_message', :class => 'btn-primary btn btn-block all_messages'
+      .col-xs-4
+       
+        
+        = link_to 'Sent', messages_path(:sent => 'sent'), id: 'sent_message', :class => 'btn-primary btn btn-block sent_messages'
+        
+      .col-xs-4
+        = link_to 'Received', messages_path(:received => 'received'), id: 'received_message', :class => 'btn-primary btn-block btn sent_messages'
+      
+    
+    =render 'messages'
 

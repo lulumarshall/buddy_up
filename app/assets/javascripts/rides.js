@@ -32,7 +32,7 @@ mapAjax.initialize = function(mapData){
         "<ul><li><span>Distance: </span>"+p[5]+"meters</li>"+
         "<li><span>Address: </span>"+p[6]+"meters</li>"+
         "<li><span>Owner: </span>" + p[3] +"</li>"+
-        "<a href= 'messages/new?receiver="+p[4]+"' class='btn btn-default' id='new-message' data-id='"+p[4]+"' target='_blank' data-method='GET'>Send Message</a></ul>"
+        "<a href= 'messages/new?receiver="+p[4]+"' class='btn btn-primary' id='new-message' data-id='"+p[4]+"' target='_blank' data-method='GET'>Send Message</a></ul>"
 
         infowindow.setContent(contentString);
         infowindow.open(map, this);
@@ -52,13 +52,13 @@ mapAjax.findRides = function(data){
     console.log('SUCCESS!')
     $.each(response, function(index, item){
       rideLocations.push([item.latitude,item.longitude, item.title, item.name, item.id, item.ride_distance, item.address]);
-      var row = $("<tr>"+
-        "<td>" + item.title+"</td>"+
-        "<td>" + item.distance+"</td>"+
-        "<td>" + item.address +"</td>"+
-        "<td>" + item.name +"</td>"+
-        "<td><a href= 'messages/new?receiver="+item.id+"' class='btn btn-default' id='new-message' data-id='"+item.id+"' target='_blank' data-method='GET'>Send Message</a></ul>")
-      row.appendTo("#ride_response table tbody")
+      // var row = $("<tr>"+
+      //   "<td>" + item.title+"</td>"+
+      //   "<td>" + item.distance+"</td>"+
+      //   "<td>" + item.address +"</td>"+
+      //   "<td>" + item.name +"</td>"+
+      //   "<td><a href= 'messages/new?receiver="+item.id+"' class='btn btn-default' id='new-message' data-id='"+item.id+"' target='_blank' data-method='GET'>Send Message</a></ul>")
+      // row.appendTo("#ride_response table tbody")
     });
     mapAjax.initialize(rideLocations)
   })

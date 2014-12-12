@@ -1,7 +1,7 @@
 .container-fluid
   .row.sessions-new
     .col-s-2.col-md-4
-    .col-xs-12.col-s-8.col-md-4.log_in_box
+    .log_in_box
       %h2 Log in
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field

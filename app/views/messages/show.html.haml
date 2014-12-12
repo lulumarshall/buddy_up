@@ -1,20 +1,24 @@
-%p#notice= notice
+.container-fluid
+  .row
+    .col-xs-12
+      .message-show
+        %h1 Message
+        %p#notice= notice
+        %p
+          %b From:
+          - @message.sender_id
+          =@sender_details.name
+        %p
+          %b Subject:
+          = @message.subject
+        %p
+          %b Content:
+          = @message.content
 
-%p
-  %b Sender:
-  - @message.sender_id
-  =@sender_details.name
-%p
-  %b Receiver:
-  - @message.receiver_id
-  =@receiver_details.name
-%p
-  %b Subject:
-  = @message.subject
-%p
-  %b Content:
-  = @message.content
-
-= link_to 'Edit', edit_message_path(@message)
-\|
-= link_to 'Back', messages_path
+        = link_to 'reply', new_message_path(:receiver=> @message.receiver_id) , :class=> 'btn btn-primary btn block'
+        \|
+        = link_to 'Edit', edit_message_path(@message)
+        \|
+        = link_to 'Back', messages_path
+    .col-xs-4
+     

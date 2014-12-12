@@ -14,15 +14,15 @@ stravaMap.findStravaRoutes = function(data){
     $.each(data,function(index, item){
       console.log(index, item);
       rideLocations.push([item.start_latlng[0],item.start_latlng[1], item.name, item.id, item.avg_grade, item.distance]);
-      var row = $("<tr>"+
-        "<td>" + item.name+"</td>"+
-        "<td>" + item.start_latlng[0]+"</td>"+
-        "<td>" + item.start_latlng[1] +"</td>"+
-        "<td>" + item.avg_grade +"</td>"+
-        "<td>" + item.end_latlng[0] +"</td>"+
-        "<td>" + item.end_latlng[1] +"</td>"+
-        "<td><a class='btn' href= 'http://www.strava.com/segments/"+ item.id + "' target='_blank'>Get more info </a></td>")
-      row.appendTo("#strava_response table tbody")
+      // var row = $("<tr>"+
+      //   "<td>" + item.name+"</td>"+
+      //   "<td>" + item.start_latlng[0]+"</td>"+
+      //   "<td>" + item.start_latlng[1] +"</td>"+
+      //   "<td>" + item.avg_grade +"</td>"+
+      //   "<td>" + item.end_latlng[0] +"</td>"+
+      //   "<td>" + item.end_latlng[1] +"</td>"+
+      //   "<td><a class='btn btn-primary' href= 'http://www.strava.com/segments/"+ item.id + "' target='_blank'>Get more info </a></td>")
+      // row.appendTo("#strava_response table tbody")
     });
     stravaMap.initialize(rideLocations)
   })

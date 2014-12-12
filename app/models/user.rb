@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   end
 
   def self.user_messages(user) 
- (user.received_messages.push user.sent_messages).map do |m|
+ ((user.received_messages).push (user.sent_messages)).map do |m|
       {sender_name: m.sender.name,
         content: m.content,
         receiver_name: m.receiver.name,

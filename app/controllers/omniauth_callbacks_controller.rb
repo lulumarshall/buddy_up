@@ -12,7 +12,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => kind.titleize
       sign_in_and_redirect @user, event: :authentication  
       session["strava_token"] = @user.get_access_token params[:code]
-      # @user.get_info session["strava_token"]
+      @user.get_info session["strava_token"]
     else
       session["devise.authentication"] = auth
       flash[:notice] = session["devise.authentication"]
